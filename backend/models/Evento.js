@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     )
     evento.associate = (models) =>{ 
         evento.belongsTo(models.Usuario,{as:"usuario",foreignKey:"usuarios_id"}) 
+        evento.belongsToMany(models.IntervaloDisponibilidade, {as:"evento_disponibilidade", through:"curtidas", foreignKey:"eventos_id", otherKey:"IntervaloDisponibilidade_id"})
   }
   
     return evento;
