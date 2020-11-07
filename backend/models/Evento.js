@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
         }
     )
     evento.associate = (models) =>{ 
-        evento.belongsTo(models.Usuario,{as:"usuario",foreignKey:"usuarios_id"}) 
+        evento.belongsTo(models.Usuario,{as:"usuario",foreignKey:"usuarios_id"})
+        evento.hasMany(models.Regra,{as:"regras", foreignKey:"eventos_id"}) 
   }
   
     return evento;

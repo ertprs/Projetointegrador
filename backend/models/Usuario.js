@@ -20,6 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   )
 usuario.associate = (models) =>{
   usuario.hasMany(models.Evento,{as:"evento",foreignKey:"usuarios_id"}) 
+  usuario.hasMany(models.Acesso,{as:"acesso",foreignKey:"usuarios_id"})
+  usuario.hasMany(models.Session,{as:"session",foreignKey:"usuarios_id"})
   // usuario.hasMany(models.Post,{as:"posts",foreignKey:"usuarios_id"})
   // usuario.belongsToMany(models.Post, {as:'usuariocurtiu',through:"curtidas",foreignKey:"usuarios_id",otherKey:"posts_id"})
 }
