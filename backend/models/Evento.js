@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
             exibicao: DataTypes.INTEGER,
             url: DataTypes.STRING,                   
             timezone: DataTypes.STRING,
+            descricao:DataTypes.STRING,
             usuarios_id:{
             type:DataTypes.INTEGER,
-            descricao:DataTypes.STRING,
             foreignKey:true
             }
 
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     evento.associate = (models) =>{ 
         evento.belongsTo(models.Usuario,{as:"usuario",foreignKey:"usuarios_id"})
         evento.hasMany(models.Regra,{as:"regras", foreignKey:"eventos_id"})
-        evento.belongsToMany(models.IntervaloDisponibilidade, {as:"evento_disponibilidade", through:"curtidas", foreignKey:"eventos_id", otherKey:"IntervaloDisponibilidade_id"}) 
+        evento.belongsToMany(models.IntervaloDisponibilidade, {as:"evento_disponibilidade", through:"eventos_x_disponibilidade", foreignKey:"eventos_id", otherKey:"IntervaloDisponibilidade_id"}) 
   }
   
     return evento;

@@ -4,11 +4,16 @@ module.exports = (sequelize, DataTypes) => {
     const pergunta = sequelize.define(
         'Resposta',
         {
-            perguntas: DataTypes.STRING,
-            eventos_id:{
+            valores: DataTypes.STRING,
+            pergutas_id:{
+                type:DataTypes.INTEGER,
+                foreignKey:true
+            },
+            agendamento_id:{
                 type:DataTypes.INTEGER,
                 foreignKey:true
             }
+
             
         },{
             tableName:"respostas",

@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
         'Agendamento',
         {
             horarioAgendadoInicio: DataTypes.STRING,
-            horarioAgendadoFim: DataTypes.STRING,
-            googleId: DataTypes.STRING,
+            horaioAgendadoFim: DataTypes.STRING,
+            googleID: DataTypes.INTEGER,
             clienteNome: DataTypes.STRING,
             clienteEmail: DataTypes.STRING,
             clienteTelefone: DataTypes.STRING,
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     )
     agendamento.associate = (models) =>{
         agendamento.belongsTo(models.Evento,{as:"agendamentos_evento",foreignKey:"eventos_id"}) 
-        agendamento.belongsToMany(models.Pergunta, {as:'agendamento_pergunta',through:"respostas",foreignKey:"pergunta_id",otherKey:"perguntas_id"})
+        //agendamento.belongsToMany(models.Pergunta, {as:'agendamento_pergunta',through:"respostas",foreignKey:"pergunta_id",otherKey:"perguntas_id"})
 
     // usuario.hasMany(models.Post,{as:"posts",foreignKey:"usuarios_id"})
     // usuario.belongsToMany(models.Post, {as:'usuariocurtiu',through:"curtidas",foreignKey:"usuarios_id",otherKey:"posts_id"})
