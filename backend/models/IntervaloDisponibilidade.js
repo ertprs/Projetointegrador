@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
             timestamps:true
         }
     )
-    evento.associate = (models) =>{ 
-        evento.belongsTo(models.DiaSemana,{as:"IntervaloDisponibilidade",foreignKey:"DiaSemana_id"}) 
+    intervaloDisponibilidade.associate = (models) =>{ 
+        intervaloDisponibilidade.belongsTo(models.DiaSemana,{as:"IntervaloDisponibilidade",foreignKey:"DiaSemana_id"}) 
     }
 
     return intervaloDisponibilidade;

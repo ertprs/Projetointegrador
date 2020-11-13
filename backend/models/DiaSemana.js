@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
             timestamps:true
         }
     )
-    evento.associate = (models) =>{ 
-        evento.hasMany(models.IntervaloDisponibilidade,{as:"intervaloDisponibilidade",foreignKey:"DiaSemana_id"}) 
+    diaSemana.associate = (models) =>{ 
+        diaSemana.hasMany(models.IntervaloDisponibilidade,{as:"intervaloDisponibilidade",foreignKey:"DiaSemana_id"}) 
     }
 
     return diaSemana;
