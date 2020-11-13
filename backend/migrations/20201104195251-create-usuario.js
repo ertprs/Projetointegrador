@@ -29,7 +29,7 @@ module.exports = {
       timezone: {
         type: Sequelize.STRING
       },
-      nomedeexebicao: {
+      nomedeexibicao: {
         type: Sequelize.STRING
       },
       createdAt: {

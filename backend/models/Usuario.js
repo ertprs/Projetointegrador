@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
           premium: DataTypes.STRING,
           timezone: DataTypes.STRING,
           nomedeexibicao: DataTypes.STRING,
-
+          logo: DataTypes.STRING,
       },{
           tableName:"usuarios",
           timestamps:false

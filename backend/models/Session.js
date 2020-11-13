@@ -5,6 +5,7 @@ module.exports = (sequelize, Datatypes) =>{
     const session = sequelize.define(
         'Session',
         {
+            session: Datatypes.STRING,
             usuario_id:{
                 type: Datatypes.INTEGER,
                 foreignKey: true

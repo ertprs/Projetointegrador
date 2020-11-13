@@ -10,8 +10,9 @@ module.exports = (sequelize, DataTypes) => {
             url: DataTypes.STRING,                   
             timezone: DataTypes.STRING,
             usuarios_id:{
-                type:DataTypes.INTEGER,
-                foreignKey:true
+            type:DataTypes.INTEGER,
+            descricao:DataTypes.STRING,
+            foreignKey:true
             }
 
         },{
