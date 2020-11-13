@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     )
     regra.associate = (models) =>{
-        regra.belongsTo(models.Eventos,{as:"eventos", foreignKey:"eventos_id"})
+        regra.belongsTo(models.Evento,{as:"eventos", foreignKey:"eventos_id"})
     }
 
     return regra;
