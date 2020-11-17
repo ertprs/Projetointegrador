@@ -5,13 +5,15 @@ module.exports = (sequelize, DataTypes) => {
         'Resposta',
         {
             valores: DataTypes.STRING,
-            pergutas_id:{
+            perguntas_id:{
                 type:DataTypes.INTEGER,
-                foreignKey:true
+                foreignKey:true,
+                primaryKey:true
             },
             agendamento_id:{
                 type:DataTypes.INTEGER,
-                foreignKey:true
+                foreignKey:true,
+                primaryKey:true
             }
 
             
