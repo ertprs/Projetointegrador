@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
             usuarios_id:{
             type:DataTypes.INTEGER,
             foreignKey:true
+            },
+            disponibilidade_id:{
+                type:DataTypes.Interger,
+                foreignKey:true
             }
 
         },{
