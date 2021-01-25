@@ -7,3 +7,10 @@ Usuario.findByPk(1).then(
     }
 )
 
+
+Usuario.findByPk(7,{include:['evento','acesso']}).then(
+    evento => {
+        console.log(evento.toJSON());
+        sequelize.close();
+    }
+)

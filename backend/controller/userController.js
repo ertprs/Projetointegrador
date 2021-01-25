@@ -223,6 +223,18 @@ module.exports = {
               console.error(err);
               res.status(400).send(err);
             }
+          },
+          getUserByUrl: async (req, res) => {
+            const userUrl = req.params.url;
+          
+            try {
+             
+              const user = await Usuario.findOne({ where:{ url: userUrl }})
+              res.status(200).json(user);
+            } catch (err) {
+              console.error(err);
+              res.status(400).send(err);
+            }
           }
 
 
