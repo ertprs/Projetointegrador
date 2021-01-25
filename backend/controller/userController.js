@@ -155,6 +155,7 @@ module.exports = {
          isUnique:  (req, res) => {
           Usuario.findOne({ where:{ url: req.query.url }})
               .then((user) => {
+
                 console.log(user)
                 if (!user) {
                   res.status(200).json({ isUnique: true });
@@ -166,7 +167,7 @@ module.exports = {
           },
           createvento: async (req, res) => {
             const sub = req.params.id;
-          
+          console.log(req.body)
             try {
               const usuario = await Usuario.findOne({
                 where: {
@@ -182,6 +183,8 @@ module.exports = {
                   timeZone : req.body.timeZone,
                   descricao : "testedes",
                 })
+                usuario.url = req.body.url
+                usuario.save()
                    
               res.status(200).send('User profile updated');
             } catch (err) {
