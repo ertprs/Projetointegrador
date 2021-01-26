@@ -10,7 +10,7 @@ const create = async (req, res) => {
 
   try {
    // const user = await User.findOne({ url });
-   const userapi = await   Usuario.findByPk(url,{include:['evento','acesso']})
+   const userapi = await   Usuario.findOne({where:{url:url},include:['evento','acesso']})
   const user = userapi.toJSON()
   
    console.log(user.evento[0].id)
