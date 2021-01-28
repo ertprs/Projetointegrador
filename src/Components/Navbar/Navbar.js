@@ -8,7 +8,7 @@ function Navbar({ picture, name }) {
   return (
     <header className={classes.navbar}>
       <h1>
-        <span>ProjetoIntegrador</span>app
+        <span>Projeto Integrador</span>app
       </h1>
       <div>
         <nav>
@@ -16,7 +16,7 @@ function Navbar({ picture, name }) {
             Home
           </Link>
           <Link className={classes.link} to="/dashboard">
-            Integração google
+            Integração Google
           </Link>
           <Link className={classes.link} to="/dashboard/user/upgrade">
             Upgrade

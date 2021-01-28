@@ -99,7 +99,7 @@ function Appointment({ classes, appointment, setUpdate }) {
           <div>
             <Typography variant="subtitle1">Email</Typography>
             <Typography gutterBottom={true}>{appointment.guestEmail}</Typography>
-            <Typography variant="subtitle1">Invitee Timezone</Typography>
+            <Typography variant="subtitle1">Fuso Horário do Convidado</Typography>
             <Typography gutterBottom={true}>{appointment.guestTz.replace('_', ' ')}</Typography>
           </div>
         </ExpansionPanelDetails>

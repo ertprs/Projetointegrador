@@ -9,15 +9,15 @@ function ConnectedPage({ btnText, handleConfirmSubmit, classes, email }) {
   return (
     <div className={classes.connectedPage}>
       <h3>
-        Here's how CalendApp will work with <span>{email}</span>:
+        Veja como o CalendApp irá usar o <span>{email}</span>:
       </h3>
       <Divider />
       <div>
-        1. We will check "<span>{email}</span>" for conflicts
+        1. Irá verificar "<span>{email}</span>" por conflitos
       </div>
       <Divider />
       <div>
-        2. We will add event to "<span>{email}</span>"
+        2. Adicionará eveto ao "<span>{email}</span>"
       </div>
       <Divider />
       <OnBoardButton text={btnText} submitForm={handleConfirmSubmit} />

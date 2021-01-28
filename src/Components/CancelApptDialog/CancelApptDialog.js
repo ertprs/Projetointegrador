@@ -30,9 +30,9 @@ function NewEventDialog({ open, handleClose, appointment, renderNewMeeting, setU
 
   return (
     <Dialog fullWidth={true} maxWidth="sm" open={open} onClose={handleClose}>
-      <DialogTitle>Voc^tem ceteza ?</DialogTitle>
+      <DialogTitle>Você tem ceteza?</DialogTitle>
       <DialogContent>
-        <DialogContentText>Confime para cancelar o evento</DialogContentText>
+        <DialogContentText>Confirme para cancelar o evento</DialogContentText>
         {/* <TextField
           fullWidth
           variant="outlined"
@@ -42,7 +42,7 @@ function NewEventDialog({ open, handleClose, appointment, renderNewMeeting, setU
         /> */}
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Não</Button>
+        <Button onClick={handleClose}>Cancelar</Button>
         <Button onClick={handleSubmit}>Confirmar</Button>
       </DialogActions>
     </Dialog>

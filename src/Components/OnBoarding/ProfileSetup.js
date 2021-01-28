@@ -12,7 +12,7 @@ function ProfileSetup({ classes, url, setUrl, setTimeZone, btnText, handleProfil
   return (
     <Grid container spacing={4} alignItems="center">
       <Grid item xs={4}>
-        <div>Create Your CalendApp URL: </div>
+        <div>Crie seu CalendApp URL: </div>
       </Grid>
 
       <Grid item xs={8}>
@@ -33,7 +33,7 @@ function ProfileSetup({ classes, url, setUrl, setTimeZone, btnText, handleProfil
       </Grid>
 
       <Grid item xs={4}>
-        <div>Select your time zone: </div>
+        <div>Selecione seu fuso horário: </div>
       </Grid>
 
       <Grid item xs={8}>

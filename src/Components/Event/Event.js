@@ -39,7 +39,7 @@ function Event({ duration, meetingName, url, user }) {
       </div>
       <div className={classes.eventDesc}>
         <h3>{meetingName}</h3>
-        <Typography variant="subtitle1">One-on-one</Typography>
+        <Typography variant="subtitle1">Pessoalmente</Typography>
       </div>
       <div className={classes.linksContainer}>
         <div>
@@ -54,7 +54,7 @@ function Event({ duration, meetingName, url, user }) {
           </Link>
         </div>
         <Button className={classes.linkButton} variant="outlined">
-          Copy Link
+          Copiar Link
         </Button>
       </div>
     </Paper>

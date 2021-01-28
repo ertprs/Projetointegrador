@@ -9,20 +9,20 @@ import PropTypes from 'prop-types';
 import * as moment from 'moment-timezone';
 
 function Confirm({ classes }) {
-  const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const weekdays = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'];
   const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Stembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro',
   ];
   const location = useLocation();
   const { url } = useParams();
@@ -137,9 +137,9 @@ function Confirm({ classes }) {
       </div>
 
       <div className={classes.confirmForm}>
-        <h2>Enter Details</h2>
+        <h2>Detalhes</h2>
         <form className={classes.form}>
-          <div>Name:</div>
+          <div>Nome:</div>
           <TextField
             required
             className={classes.textField}
@@ -162,7 +162,7 @@ function Confirm({ classes }) {
             onChange={handleEmail}
           />
 
-          <div>Meeting Notes: </div>
+          <div>Notas da Reunião: </div>
           <TextareaAutosize
             className={classes.textArea}
             aria-label="meeting-comments"
@@ -170,7 +170,7 @@ function Confirm({ classes }) {
             onChange={(e) => setComment(e.target.value)}
           />
           <Button className={classes.button} variant="contained" color="primary" onClick={submitForm}>
-            Schedule Event
+            Agendar Evento
           </Button>
         </form>
       </div>

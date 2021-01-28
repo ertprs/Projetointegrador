@@ -40,7 +40,7 @@ function ConfirmedAppointment() {
         </div>
       </div>
       <Typography align="center" variant="body1">
-        A calendar invitation has been sent to your email address.
+        Um convide do calendar foi enviado ao seu e-mail.
       </Typography>
     </Paper>
   );

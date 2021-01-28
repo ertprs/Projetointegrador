@@ -54,12 +54,12 @@ function NewEventDialog({ open, handleClose, sub, renderNewMeeting }) {
 
   return (
     <Dialog fullWidth={true} maxWidth="sm" open={open} onClose={handleClose}>
-      <DialogTitle>Create New Event</DialogTitle>
+      <DialogTitle>Criar Novo Evento</DialogTitle>
       <DialogContent>
-        <DialogContentText>Enter a name for your event and select a duration.</DialogContentText>
-        <TextField fullWidth required variant="outlined" label="Event name" value={name} onChange={handleNameChange} />
+        <DialogContentText>Nomeie o evento e selecione uma duração.</DialogContentText>
+        <TextField fullWidth required variant="outlined" label="Nome do Evento" value={name} onChange={handleNameChange} />
         <div className={classes.eventField}>
-          <DialogContentText>Event Duration *</DialogContentText>
+          <DialogContentText>Duração do Evento.</DialogContentText>
           <ul className={classes.listContainer}>
             <li className="selected" value={15} onClick={handleSelectedClass}>
               15 min
@@ -77,8 +77,8 @@ function NewEventDialog({ open, handleClose, sub, renderNewMeeting }) {
         </div>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleSubmit}>Submit</Button>
+        <Button onClick={handleClose}>Cancelar</Button>
+        <Button onClick={handleSubmit}>Enviar</Button>
       </DialogActions>
     </Dialog>
   );

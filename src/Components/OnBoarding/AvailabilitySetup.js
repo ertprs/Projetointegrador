@@ -42,7 +42,7 @@ function AvailabilitySetup({ classes, setHours, hours, setDays, days, btnText, s
   return (
     <React.Fragment>
       <div>
-        <div>Available Hours: </div>
+        <div>Horas Disponíveis: </div>
         <div className={classes.hoursRow}>
           <TextField
             id="start-hours-field"
@@ -65,7 +65,7 @@ function AvailabilitySetup({ classes, setHours, hours, setDays, days, btnText, s
       </div>
 
       <div>
-        <div>Available Days: </div>
+        <div>Dais Disponíveis: </div>
         <FormGroup row className={classes.checkBoxGroup}>
           {renderCheckBoxes(days)}
         </FormGroup>
