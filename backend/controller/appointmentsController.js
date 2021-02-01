@@ -6,6 +6,8 @@ const moment = require('moment-timezone');
 
 const create = async (req, res) => {
   const { guestName, guestEmail, guestComment, guestTz, meetingName, meetTime, apptTime, url } = req.body;
+  console.log("req.body")
+  console.log(req.body)
   const endTime = moment(apptTime).add(meetTime, 'm').format();
 
   try {
@@ -36,15 +38,15 @@ const create = async (req, res) => {
     console.log("sssssssssssssssssss")
     console.log( user.acesso[0].accessToken)
  //   const eventTime = `${moment(apptTime).tz(user.timezone).format('h:mma - dddd, MMMM Do YYYY')}
- const eventTime = `${moment(apptTime).tz("Brazil/Acre").format('h:mma - dddd, MMMM Do YYYY')}
-    (${"Brazil/Acre".replace('_', ' ')} GMT${moment.tz("Brazil/Acre").format('Z')})`;
+ const eventTime = `${moment(apptTime).tz(user.timezone).format('h:mma - dddd, MMMM Do YYYY')}
+    (${user.timezone.replace('_', ' ')} GMT${moment.tz("Brazil/Acre").format('Z')})`;
     try {
       const googleEventData = await insertEvent(
         user.acesso[0].accessToken,
         user.acesso[0].refreshToken,
         apptTime,
         endTime,
-        "Brazil/Acre",
+        user.timezone,
         meetingName,
         guestEmail,
         guestName,
@@ -125,7 +127,7 @@ const userapi = await   Usuario.findByPk(req.params.user_id,{include:['evento','
       return a.horarioAgendadoInicio - b.horarioAgendadoInicio;
     });
     const parsed = { upcoming: {}, past: {} };
-    const curr = moment().tz("Brazil/Acre").format();
+    const curr = moment().tz(user.timezone).format();
     for (const appt of resp) {
       const time = moment(appt.horarioAgendadoInicio);
       if (time.isAfter(curr)) {

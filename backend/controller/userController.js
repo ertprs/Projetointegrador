@@ -1,19 +1,21 @@
 const { Usuario , Acesso , Evento } = require('../models');
 const { google } = require('googleapis');
 const _ = require('lodash');
-const oauth2Client = new google.auth.OAuth2("887604457541-dfaqud9h6kgctett013ia8m018n9hrtl.apps.googleusercontent.com", "UbP1NGIvKahRTNzKplyJDh0e", `postmessage`);
+require('dotenv').config()
+
+const oauth2Client = new google.auth.OAuth2(process.env.REACT_APP_CLIENT_ID, process.env.CLIENT_SECRET, `postmessage`);
 
 async function verifyToken(token) {
   try {
     const ticket = await oauth2Client.verifyIdToken({
       idToken: token,
-      audience: "887604457541-dfaqud9h6kgctett013ia8m018n9hrtl.apps.googleusercontent.com",
+      audience: process.env.REACT_APP_CLIENT_ID,
     });
 
     const payload = ticket.getPayload();
     //second verification of token
     if (
-      payload.aud !== "887604457541-dfaqud9h6kgctett013ia8m018n9hrtl.apps.googleusercontent.com" ||
+      payload.aud !== process.env.REACT_APP_CLIENT_ID ||
       (payload.iss !== 'accounts.google.com' && payload.iss !== 'https://accounts.google.com')
     ) {
       throw 'Token is not from client or issued by Google';
@@ -176,13 +178,14 @@ module.exports = {
               });
                 Evento.create({
                   usuarios_id : usuario.dataValues.id,
-                  nomeEvento : "teste",
+                  nomeEvento : "60",
                   duracao : 60,
                   exibicao : 60,
-                  url : "testeurl",
-                  timeZone : req.body.timeZone,
-                  descricao : "testedes",
+                  url : "60",
+                  timezone : req.body.timeZone,
+                  descricao : "Agendamento de 60 minutos",
                 })
+                usuario.timezone = req.body.timeZone
                 usuario.url = req.body.url
                 usuario.save()
                    
@@ -201,7 +204,7 @@ module.exports = {
            console.log(user)
               const meetings = []
              // const evento = await Evento.findAll({ where:{ usuarios_id: user.dataValues.id }});
-              const evento = await Evento.findAll({ where:{ usuarios_id: [user.dataValues.id,1] }});
+              const evento = await Evento.findAll({ where:{ usuarios_id: [user.dataValues.id] }});
              
               evento.forEach(element => {
                 console.log(element.dataValues)
@@ -232,7 +235,7 @@ module.exports = {
           
             try {
              
-              const user = await Usuario.findOne({ where:{ url: userUrl }})
+              const user = await Usuario.findOne({ where:{ url: userUrl } ,include:['evento','acesso']})
               res.status(200).json(user);
             } catch (err) {
               console.error(err);

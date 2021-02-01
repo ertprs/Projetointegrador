@@ -19,7 +19,7 @@ function AppointmentList({ classes, appointments, setUpdate }) {
   return (
     <div className={classes.root}>
       <Typography variant="h6" className={classes.date}>
-        {moment(appointments[0].horarioAgendadoInicio).tz("Brazil/Acre").format('dddd, MMMM Do YYYY')}
+        {moment(appointments[0].horarioAgendadoInicio).tz("America/Sao_Paulo").format('dddd, MMMM Do YYYY')}
       </Typography>
       {appointments.map((appointment) => (
    

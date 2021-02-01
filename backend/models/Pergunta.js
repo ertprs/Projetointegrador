@@ -17,10 +17,6 @@ module.exports = (sequelize, DataTypes) => {
     )
     pergunta.associate = (models) =>{
         pergunta.belongsTo(models.Evento,{as:"pergunta_evento",foreignKey:"eventos_id"}) 
-    // usuario.hasMany(models.Post,{as:"posts",foreignKey:"usuarios_id"})
-   // pergunta.belongsToMany(models.Agendamento, {as:'pergunta_agendamento',through:"respostas",foreignKey:"agendamento_id",otherKey:"perguntas_id"})
-  }
-  
-    return pergunta;
-    
+     }
+    return pergunta; 
   }

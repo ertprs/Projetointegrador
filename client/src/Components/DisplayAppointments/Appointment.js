@@ -69,12 +69,12 @@ function Appointment({ classes, appointment, setUpdate }) {
           <div className={classes.column}>
             <FaRegCalendarCheck size={23} className={classes.icon} />{' '}
             <span className={classes.time}>
-              {moment(appointment.horarioAgendadoInicio).tz("Brazil/Acre").format('hh:mma')} -
-              {moment(appointment.horarioAgendadoInicio).tz("Brazil/Acre").add("60", 'm').format('hh:mma')}
+              {moment(appointment.horarioAgendadoInicio).tz("America/Sao_Paulo").format('hh:mma')} -
+              {moment(appointment.horarioAgendadoInicio).tz("America/Sao_Paulo").add("60", 'm').format('hh:mma')}
             </span>
           </div>
           <div>
-            <Typography variant="subtitle1">{appointment.clienteNome}</Typography>
+            <Typography variant="subtitle1">{appointment.clienteEmail}</Typography>
             <Typography>{appointment.clienteNome}</Typography>
           </div>
         </ExpansionPanelSummary>
@@ -100,7 +100,7 @@ function Appointment({ classes, appointment, setUpdate }) {
             <Typography variant="subtitle1">Email</Typography>
             <Typography gutterBottom={true}>{appointment.clienteEmail}</Typography>
             <Typography variant="subtitle1">Invitee Timezone</Typography>
-            <Typography gutterBottom={true}>{"Brazil/Acre".replace('_', ' ')}</Typography>
+            <Typography gutterBottom={true}>{"America/Sao_Paulo".replace('_', ' ')}</Typography>
           </div>
         </ExpansionPanelDetails>
         <Divider />

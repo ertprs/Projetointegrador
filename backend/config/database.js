@@ -1,9 +1,11 @@
-module.exports = {
-    username: "root",
+require('dotenv').config();
 
-    password: "123456",
-  database: "projetointegrador",
-    host: "localhost",
-    dialect: "mysql",
-    port: 3306
+module.exports = {
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_SCHEMA,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: process.env.DIALECT,
+    operatorsAliases: "0",
 }

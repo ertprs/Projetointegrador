@@ -25,14 +25,14 @@ const daysAvailable = async (req, res) => {
       const endISO = moment.tz([year, 0, 31], clientTz).month(reqMonth).add(1, 'day').format();
 
       const freebusy = await getFreebusy(  user.acesso[0].accessToken,  user.acesso[0].refreshToken, startISO, endISO, uniqueurl);
-const regra = {days:{Sunday:false,Monday:false,Monday:false,Tuesday:true,Wednesday:true,Thursday:true,Friday:true,Saturday:false},
+const regra = {days:{Sunday:false,Monday:false,Tuesday:true,Wednesday:true,Thursday:true,Friday:true,Saturday:false},
 hours:{start:"09:00",end:"18:00"}}
 
       const availableDays = availDays(
         [year, reqMonth, day],
         freebusy,
         regra,
-        "Brazil/Acre",
+        user.timezone,
         clientTz,
         reqMeet,
       );
@@ -60,21 +60,23 @@ const timeslotsAvailable = async (req, res) => {
   try {
     const userapi = await Usuario.findOne({ where:{ url: req.query.uniqueurl },include:['evento','acesso']});
     const user = userapi.toJSON()
-    console.log(user)
+
 
     try {
       const startISO = moment.tz([year, reqMonth, reqDay], clientTz).format();
       const endISO = moment.tz([year, reqMonth, reqDay], clientTz).add(1, 'day').format();
 
       const freebusy = await getFreebusy( user.acesso[0].accessToken,  user.acesso[0].refreshToken, startISO, endISO, uniqueurl);
-      const regra = {days:{Sunday:false,Monday:false,Monday:false,Tuesday:true,Wednesday:true,Thursday:true,Friday:true,Saturday:false},
+      console.log("<<<<<<<<<<>>>>>")
+      console.log(date)
+      const regra = {days:{Sunday:false,Monday:false,Tuesday:true,Wednesday:true,Thursday:true,Friday:true,Saturday:false},
       hours:{start:"09:00",end:"18:00"}}
       const availableSlots = availSlots(
         date,
         freebusy,
         regra.hours,
         regra.days,
-        "Brazil/Acre",
+        user.timezone,
         clientTz,
         reqMeet,
       );

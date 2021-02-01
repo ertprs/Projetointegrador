@@ -54,11 +54,13 @@ function CalendarPage() {
       .then(handleFetchErrors)
       .then((res) => res.json())
       .then((data) => {
-        data.family_name ? setUserName(data.given_name + ' ' + data.family_name) : setUserName(data.given_name);
+       
+        data.family_name ? setUserName(data.given_name + ' ' + data.family_name) : setUserName(data.evento[0].nomeevento);
 
         //find specific meeting type
-        const meeting = data.meetings.filter((meeting) => meeting.duration === parseInt(eventDuration));
+        const meeting = data.evento.filter((meeting) => meeting.duracao === parseInt(eventDuration));
         setMeeting(meeting[0]);
+        console.log(meeting[0])
       })
       .catch((e) => console.log('Error ' + e));
   }, [url, eventDuration]);
@@ -72,6 +74,7 @@ function CalendarPage() {
         setShowTimeSlots(false);
         setCalendarVal(null);
       });
+
   }, [clientTz, currMonth, eventDuration, url]);
 
   function setMaxDate() {
@@ -129,7 +132,7 @@ function CalendarPage() {
       <div className={classes.eventInfo}>
         <Typography variant="h6">{userName}</Typography>
         <Typography className={classes.meetingName} variant="h4">
-          {meeting.meetingName}
+          {meeting.nomeevento}
         </Typography>
         <div className={classes.duration}>
           <FaClock size={20} />

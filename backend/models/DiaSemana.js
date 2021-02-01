@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     diaSemana.associate = (models) =>{ 
         diaSemana.hasMany(models.IntervaloDisponibilidade,{as:"intervaloDisponibilidade",foreignKey:"DiaSemana_id"}) 
     }
-
     return diaSemana;
 
     } 

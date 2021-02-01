@@ -3,7 +3,9 @@
 const { Acesso , Agendamento  } = require('../models');
 const { google } = require('googleapis');
 const calendar = google.calendar('v3');
-const oauth2Client = new google.auth.OAuth2("887604457541-dfaqud9h6kgctett013ia8m018n9hrtl.apps.googleusercontent.com", "UbP1NGIvKahRTNzKplyJDh0e", `postmessage`);
+require('dotenv').config()
+
+const oauth2Client = new google.auth.OAuth2(process.env.REACT_APP_CLIENT_ID, process.env.CLIENT_SECRET, `postmessage`);
 oauth2Client.generateAuthUrl({ access_type: 'offline' });
 
 async function getFreebusy(access, refresh, startISO, endISO, url) {
@@ -29,7 +31,8 @@ async function getFreebusy(access, refresh, startISO, endISO, url) {
         timeMax: endISO,
       },
     });
-
+    console.log("resp.data.calendars.primary.busy")
+console.log(resp.data.calendars.primary.busy)
     return resp.data.calendars.primary.busy;
   } catch (err) {
     throw ('Error at gcal freebusy', err);

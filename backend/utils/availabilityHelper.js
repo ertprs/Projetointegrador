@@ -205,6 +205,8 @@ function addToSlots(currStart, availEnd, reqMeet, slotTime, slots) {
 
 //takes in freebusy for client 12am-12am, finds and returns available time slots
 function availSlots(date, freebusy, userHours, userDays, userTz, clientTz, reqMeet) {
+  console.log(freebusy)
+  //console.log (date, freebusy, userHours, userDays, userTz, clientTz, reqMeet)
   const slots = [];
 
   //check for a meeting every 30min for any length meeting. (15min for 15min meeting)
@@ -222,7 +224,7 @@ function availSlots(date, freebusy, userHours, userDays, userTz, clientTz, reqMe
 
   const userStart = moment(dayStartISO).hour(userHours.start.split(':')[0]).minute(userHours.start.split(':')[1]);
   const userEnd = moment(dayStartISO).hour(userHours.end.split(':')[0]).minute(userHours.end.split(':')[1]);
-
+console.log(userStart,userEnd)
   //if dayStart is between userHours, userStart will end up before dayStart when setting hour
   const endFirst = userStart.isBefore(curr); //bool
   if (endFirst) userStart.add(1, 'day');
@@ -248,8 +250,12 @@ function availSlots(date, freebusy, userHours, userDays, userTz, clientTz, reqMe
     }
     busy = freebusy[b];
     if (busy) {
+      console.log("<<<<<<<<<<<bust")
+      console.log(busy)
       busyStart = moment(busy.start);
+      console.log(busyStart)
       busyEnd = moment(busy.end);
+      console.log(busyEnd)
     }
 
     if (busy && busyEnd.isSameOrBefore(curr)) {
@@ -300,7 +306,7 @@ function availSlots(date, freebusy, userHours, userDays, userTz, clientTz, reqMe
       } else break; //break loop if current time passes user hours (userStart-> userEnd) and doesn't reach dayEnd
     }
   }
-
+console.log(slots)
   return slots.map((time) => moment.tz(time, clientTz).format());
 }
 

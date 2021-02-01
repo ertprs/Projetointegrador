@@ -29,10 +29,11 @@ function Confirm({ classes }) {
   const clientTz = location.state.clientTz;
   const appt = moment.tz(location.state.time, clientTz);
   const apptTime = appt.format(); //do not move down, moment is mutable
-
-  const appointmentStr = `${appt.format('h:mma')} - ${appt.add(location.state.meeting.duration, 'm').format('h:mma')}
+  console.log(location)
+  
+  const appointmentStr = `${appt.format('h:mma')} - ${appt.add(location.state.meeting.duracao, 'm').format('h:mma')}
   ${weekdays[appt.day()]}, ${months[appt.month()]} ${appt.date()}, ${appt.year()}`;
-
+console.log(appointmentStr)
   const [nameField, setName] = useState({ name: '', error: false, errorText: '' });
   const [emailField, setEmail] = useState({ email: '', error: false, errorText: '' });
   const [comment, setComment] = useState('');
@@ -57,7 +58,7 @@ function Confirm({ classes }) {
 
   let history = useHistory();
   const handleBackButton = () => {
-    history.push(`/${url}/${location.state.meeting.duration}`); //back to scheduler
+    history.push(`/${url}/${location.state.meeting.duracao}`); //back to scheduler
   };
 
   const submitForm = () => {
@@ -70,7 +71,7 @@ function Confirm({ classes }) {
       history.push('/finish', {
         url: url,
         name: location.state.name,
-        meetingName: location.state.meeting.meetingName,
+        meetingName: location.state.meeting.nomeEvento,
         apptTime: appointmentStr,
         timezone: location.state.clientTz,
       });
@@ -82,8 +83,8 @@ function Confirm({ classes }) {
       guestEmail: emailField.email,
       guestComment: comment,
       guestTz: clientTz,
-      meetingName: location.state.meeting.meetingName,
-      meetTime: location.state.meeting.duration,
+      meetingName: location.state.meeting.nomeEvento,
+      meetTime: location.state.meeting.duracao,
       apptTime: apptTime,
       url,
     };
@@ -101,7 +102,7 @@ function Confirm({ classes }) {
         history.push('/finish', {
           url: url,
           name: location.state.name,
-          meetingName: location.state.meeting.meetingName,
+          meetingName: location.state.meeting.nomeEvento,
           apptTime: appointmentStr,
           timezone: location.state.clientTz,
         });
